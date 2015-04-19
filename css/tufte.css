@@ -2,7 +2,7 @@
 /*
 /* Tufte Jekyll blog theme
 /* Based on Tufte CSS by Dave Liepmann ( https://github.com/daveliepmann/tufte-css )
-/* 
+/*
 /* The README.md will show you how to set up your site along with other goodies
 /*****************************************************************************/
 @font-face {
@@ -304,11 +304,24 @@ pre code, pre code p, code {
   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
   color: #222;
   font-size: 1.2rem;
-  line-height: 1.63333333333; }
+  line-height: 1.63333333333;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+  white-space: pre-wrap;    /* Wrap long lines */
+  width: 55%;
+}
 
+/*
+Use rmarkdown code block styling
+https://github.com/rstudio/rmarkdown/blob/master/inst/rmarkdown/templates/html_vignette/resources/vignette.css
+*/
 pre {
-  margin-top: 1.4rem;
-  margin-bottom: 1.4rem; }
+  white-space: pre-wrap;    /* Wrap long lines */
+  border-radius: 3px;
+  margin: 5px 0px 10px 0px;
+  background-color: #f7f7f7;
+  width: 55%;
+}
 
 article {
   position: relative; }
@@ -319,9 +332,10 @@ p, li {
   margin-top: 1.4rem;
   margin-bottom: 1.4rem;
   padding-right: 0px;
-  vertical-align: baseline; }
+  vertical-align: baseline;
+}
 
-p, article ul li, pre code, pre code p, code {
+p, article ul li, article ol li, pre code, pre code p, code {
   width: 55%; }
 
 @media screen and (max-width: 600px) {
@@ -418,9 +432,11 @@ h5 {
 h6, .smaller, [id^="fn:"] > p, ol > [id^="fn:"] {
   font-weight: 400;
   font-size: 1.2rem;
-  margin-top: 3.266666666667rem;
+  margin-top: 0.5rem;
   margin-bottom: 0rem;
-  line-height: 1.63333333333; }
+  line-height: 1.63333333333;
+  width: 100%;
+}
 
 ol > [id^="fn:"] {
   color: #a00000; }
