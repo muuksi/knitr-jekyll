@@ -24,7 +24,7 @@ p <- ggplot(diamonds, aes(carat))
 p + geom_histogram()
 {% endhighlight %}
 
-{% maincolumn '/figure/source/2015-04-20-jekyll-tufte-servr/skinny-1.png' 'Figure 1: A nice plot that is not quite wide enough.' %}
+{% maincolumn 'figure/source/2015-04-20-jekyll-tufte-servr/skinny-1.png' 'Figure 1: A nice plot that is not quite wide enough.' %}
 
 If we increase `fig.width` to a ridiculous number, say 20 inches, it will still be constrained to the text width, even by changing `fig.width` to 20 inches. 
 
@@ -33,7 +33,7 @@ If we increase `fig.width` to a ridiculous number, say 20 inches, it will still 
 p + geom_histogram(aes(y = ..density..))
 {% endhighlight %}
 
-{% maincolumn '/figure/source/2015-04-20-jekyll-tufte-servr/wide-1.png' 'Figure 2: The `fig.height` for this chunk is same as Figure 1, but the `fig.width` is now 20. Since the width is constrained by the text width, the figure is shrunken quite a bit.' %}
+{% maincolumn 'figure/source/2015-04-20-jekyll-tufte-servr/wide-1.png' 'Figure 2: The `fig.height` for this chunk is same as Figure 1, but the `fig.width` is now 20. Since the width is constrained by the text width, the figure is shrunken quite a bit.' %}
 
 By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you need a wider figure, set the `fig.fullwidth` chunk option equal to `TRUE`.
 
@@ -44,7 +44,7 @@ p + geom_point(aes(y = price), alpha = 0.2) +
   geom_smooth(aes(y = price, fill = cut))
 {% endhighlight %}
 
-{% fullwidth '/figure/source/2015-04-20-jekyll-tufte-servr/full-1.png' 'Figure 3: Full width plot' %}
+{% fullwidth 'figure/source/2015-04-20-jekyll-tufte-servr/full-1.png' 'Figure 3: Full width plot' %}
 
 To place figures in the margin, set the `fig.margin` chunk option equal to `TRUE`.
 
@@ -59,7 +59,7 @@ lim <- par()
 rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
 {% endhighlight %}
 
-{% marginfigure '/figure/source/2015-04-20-jekyll-tufte-servr/margin-1.png' 'Figure 4: useR logo' %}
+{% marginfigure 'figure/source/2015-04-20-jekyll-tufte-servr/margin-1.png' 'Figure 4: useR logo' %}
 
 {% highlight r %}
 unlink(tmp)
@@ -79,13 +79,14 @@ options(width = 55, digits = 3)
 
 
 {% highlight text %}
-##  [1]  0.4676 -1.1649 -1.0466 -0.5921 -0.4563  0.1141
-##  [7] -0.5025  0.6028 -0.6596 -1.2062 -1.2006  1.0564
-## [13] -0.5564  0.1955  1.0502  1.0206 -0.2786 -0.1571
-## [19] -0.2717 -0.3671 -0.2359  0.7784  1.0239  1.0302
-## [25] -0.5379 -0.5878  0.3999  0.1838 -1.0429  1.3897
-## [31] -0.2863  0.1650 -1.6549 -0.0756 -0.1145  0.4948
-## [37] -2.5043  0.1749  0.8989 -0.3894
+##  [1] -1.78156  0.38211 -1.53647 -0.41658 -0.85333
+##  [6]  0.40763 -1.81052 -1.34721  0.10468  0.57001
+## [11]  0.19924  1.54364  0.33925  0.15641  1.31200
+## [16] -0.25353 -0.71445  1.44399 -2.13030 -1.91447
+## [21] -0.40594 -0.80865 -0.49926 -0.15901  0.76991
+## [26]  2.79498 -1.32291  0.94437 -0.45064  0.00898
+## [31] -0.01879  1.51417  1.32553 -0.27357  0.72104
+## [36]  1.58190  1.02801 -0.28333 -2.03918  0.88615
 {% endhighlight %}
 
 ## Mathjax
