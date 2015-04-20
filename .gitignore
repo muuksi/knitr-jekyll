@@ -2,4 +2,5 @@
 .Rhistory
 .RData
 _site/
+cache/
 .sass-cache/

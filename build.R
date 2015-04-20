@@ -29,6 +29,26 @@ local({
   } else {
     knitr::opts_knit$set(base.url = '/')
   }
-  knitr::opts_knit$set(width = 70)
+  knitr::knit_hooks$set(plot = function(x, options) {
+    cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
+    inline <- sprintf("'/%s' '%s'", as.character(x), cap)
+    # assume people want the main column by default
+    if (is.null(options$fig.maincolumn)) options$fig.maincolumn <- TRUE
+    if (isTRUE(options$fig.margin)) {
+      paste("{% marginfigure", inline, "%}")
+    } else if (isTRUE(options$fig.fullwidth)) {
+      paste("{% fullwidth", inline, "%}")
+    } else if (options$fig.maincolumn) {
+      paste("{% maincolumn", inline, "%}")
+    } else {
+      knitr::hook_plot_html(x, options)
+    }
+  })
+  knitr::opts_knit$set(width = 50)
   knitr::knit(a[1], a[2], quiet = TRUE, encoding = 'UTF-8', envir = .GlobalEnv)
 })
+
+# plot output hook specific to the tufte styling
+# help from here https://github.com/rstudio/rmarkdown/blob/master/R/tufte_handout.R
+
+
