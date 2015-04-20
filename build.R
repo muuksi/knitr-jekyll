@@ -32,7 +32,7 @@ local({
   # post-process plot output to the tufte specific liquid tags
   knitr::knit_hooks$set(plot = function(x, options) {
     cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
-    inline <- sprintf("'/%s' '%s'", as.character(x), cap)
+    inline <- sprintf("'%s' '%s'", as.character(x), cap)
     # assume people want the main column by default
     if (is.null(options$fig.maincolumn)) options$fig.maincolumn <- TRUE
     if (isTRUE(options$fig.margin)) {
