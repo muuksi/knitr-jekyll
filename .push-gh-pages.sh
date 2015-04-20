@@ -8,7 +8,7 @@ git checkout master
 COMMIT=`git rev-parse HEAD`
 git checkout gh-pages
 rm -rf *
-git checkout master -- _site
+git checkout master -- _site/
 mv _site/* .
 rm -rf _site/
 git add *
