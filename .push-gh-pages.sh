@@ -9,9 +9,9 @@ COMMIT=`git rev-parse HEAD`
 git checkout gh-pages
 # since _site/ is in .gitignore, it should be copied over automatically
 rm .Rhistory || true
-mv _site/* .
+cp -r _site/* .
 rm -rf _site/
 git add *
-git commit -m "Site number: ${COMMIT}"
+git commit -m "_site/ folder pertaining to commit: ${COMMIT}"
 git push origin gh-pages
 git checkout master
