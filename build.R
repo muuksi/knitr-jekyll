@@ -29,6 +29,7 @@ local({
   } else {
     knitr::opts_knit$set(base.url = '/')
   }
+  # post-process plot output to the tufte specific liquid tags
   knitr::knit_hooks$set(plot = function(x, options) {
     cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
     inline <- sprintf("'/%s' '%s'", as.character(x), cap)
@@ -47,8 +48,3 @@ local({
   knitr::opts_knit$set(width = 50)
   knitr::knit(a[1], a[2], quiet = TRUE, encoding = 'UTF-8', envir = .GlobalEnv)
 })
-
-# plot output hook specific to the tufte styling
-# help from here https://github.com/rstudio/rmarkdown/blob/master/R/tufte_handout.R
-
-
