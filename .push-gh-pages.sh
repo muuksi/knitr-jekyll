@@ -8,7 +8,7 @@ git checkout master
 COMMIT=`git rev-parse HEAD`
 git checkout gh-pages
 # since _site/ is in .gitignore, it should be copied over automatically
-rm .Rhistory
+rm .Rhistory || true
 mv _site/* .
 rm -rf _site/
 git add *
