@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# automatically exit on error
+set -e
+
 # copy _site/ from master branch over to gh-pages and push to github
 git checkout master
 COMMIT=`git rev-parse HEAD`
