@@ -105,7 +105,7 @@ $$
 
 <span class='marginnote'> 
 <img class="fullwidth" src="http://i.imgur.com/NCMxz5G.gif">
-So excite.
+Much margin. So excite.
 </span>
 
 Put stuff in the side margin using the `<span>` HTML tag with a class of 'marginnote':
