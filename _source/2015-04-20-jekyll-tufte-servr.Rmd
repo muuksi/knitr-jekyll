@@ -5,21 +5,19 @@ categories: [jekyll, rstats]
 tags: [knitr, servr, httpuv, websocket]
 ---
 
-<span class='newthought'>This post introduces</span> [my fork](http://github.com/cpsievert/knitr-jekyll) of Yihui's [knitr-jekyll](https://github.com/yihui/knitr-jekyll) that swaps the default theme with [tufte-jekyll](https://github.com/clayh53/tufte-jekyll). I recommend reading [this post](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html) to learn about why `servr + knitr + jekyll` is awesome and (if needed) use [this post](http://clayh53.github.io/tufte-jekyll/articles/15/tufte-style-jekyll-blog/) as a reference for "tufte-jekyll liquid tags" that do stuff like this <span class='newthought'>pointless side note</span>. There are a lot moving parts, so if you use this and run into issues, [please let me know](https://github.com/cpsievert/knitr-jekyll)!
+<span class='newthought'>This post</span> demonstrates [my fork](http://github.com/cpsievert/knitr-jekyll) of Yihui's [knitr-jekyll](https://github.com/yihui/knitr-jekyll) which tweaks the default layout to resemble [tufte-jekyll](https://github.com/clayh53/tufte-jekyll). As Yihui mentions in his [knitr-jekyll blog post](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html) (which I _highly_ recommend reading), GitHub Pages does not support arbitrary Jekyll plugins, but I've managed to remove tufte-jekyll's dependency on custom plugins via custom [knitr output hooks](http://yihui.name/knitr/hooks/). Not only does this allow GitHub Pages to build and host this template automagically, but it also fixes [tufte-jekyll's problem with figure paths](https://github.com/clayh53/tufte-jekyll#which-brings-me-to-sorrow-and-shame). 
+
+The rest of this post shows you how to use these custom hooks and some other useful things specific to this template (at some point, you might also want the [source for this post](https://raw.githubusercontent.com/cpsievert/knitr-jekyll/gh-pages/_source/2015-04-20-jekyll-tufte-servr.Rmd))
 
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(message = FALSE, cache = TRUE, fig.height = 4)
 ```
 
-## Special chunk options
+### Figures
 
-There are a few **knitr** [chunk options](http://yihui.name/knitr/options/) that conveniently map your output to special formatting supported by the tufte-jekyll layout. You might find it useful to [view the source](https://raw.githubusercontent.com/cpsievert/knitr-jekyll/gh-pages/_source/2015-04-20-jekyll-tufte-servr.Rmd) for this post to see the actual chunk option settings.
+By default, the `fig.width` [chunk option](http://yihui.name/knitr/options/) is equal to 7 inches. Assuming the zoom of your browser window is at 100%, that translates to about 3/4 of the textwidth.
 
-### Figure options
-
-By default, the `fig.width` chunk option is equal to 7 inches. That translates to about 3/4 of the textwidth (assuming the zoom of your browser window is at 100%). 
-
-```{r skinny, fig.cap = "Figure 1: A nice plot that is not quite wide enough."}
+```{r skinny, fig.cap = "Figure 1: A nice plot that is not quite wide enough. Note that this figure caption was created using the `fig.cap` chunk option"}
 library(ggplot2)
 p <- ggplot(diamonds, aes(carat)) 
 p + geom_histogram()
@@ -31,7 +29,7 @@ If we increase `fig.width` to a ridiculous number, say 20 inches, it will still 
 p + geom_histogram(aes(y = ..density..))
 ```
 
-By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you need a wider figure, set the `fig.fullwidth` chunk option equal to `TRUE`.
+By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you don't want to retrict the final figure width, set the `fig.fullwidth` chunk option equal to `TRUE`. In this case, the figure caption is placed in the side margin below the figure.
 
 ```{r full, fig.width = 20, fig.fullwidth = TRUE, fig.cap = "Figure 3: Full width plot"}
 p + geom_point(aes(y = price), alpha = 0.2) + 
@@ -65,48 +63,58 @@ options(width = 55, digits = 3)
 
 What's that? You can't live without math equations?
 
-<script type="math/tex; mode=display">
+$$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
-</script>
+$$
 
-If you want inline, <script type="math/tex"> \alpha </script>
+If you want inline, $$ \alpha $$.
 
-## Tables
+## Marginnotes
 
-
-At any time, you can add an arbitrary "marginnote" like this:
+It's easy to add comments in the side margin by wrapping your comments in a `<span>` HTML tag:
 
 {% highlight html %}
-<span class='marginnote'>
-  Table 1: Diamonds data
-</span>
+<span class='marginnote'> Add comment here </span>
 {% endhighlight %}
 
-This can be quite useful especially for tables.
+Marginnotes can be especially useful for tables.
 
-<span class='marginnote'> Table 1: Diamonds data </span>
+<span class='marginnote'> 
+Table 1: Output from a simple linear regression in tabular form.
+</span>
 
-```{r}
-knitr::kable(head(diamonds), "markdown")
+```{r echo = FALSE}
+m <- lm(vs ~ wt, mtcars)
+knitr::kable(broom::tidy(m), format = "markdown")
 ```
 
 ## Sidenotes
 
-Similar to a 'marginnote' is a 'sidenote' which works like this
-<sup class='sidenote-number'>
- 1
-</sup>
+Similar to a 'marginnote' is a 'sidenote'<sup class='sidenote-number'> 1 </sup> which works like this
+
 <span class='sidenote'>
   <sup class='sidenote-number'> 1 </sup> 
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
 
 {% highlight html %}
-<sup class='sidenote-number'>
- 1
-</sup>
+<sup class='sidenote-number'> 1 </sup>
 <span class='sidenote'>
   <sup class='sidenote-number'> 1 </sup> 
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
 {% endhighlight %}
+
+Of course[^1], you can also do footnotes.
+
+[^1]: I hate it when people say "of course" as though this is obvious everyone.
+
+## Contact me
+
+If you find any issues or want to help improve the implementation, [please let me know](https://github.com/cpsievert/knitr-jekyll/issues/new)!
+
+## Session Information
+
+```{r}
+sessionInfo()
+```
