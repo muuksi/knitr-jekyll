@@ -13,7 +13,7 @@ knitr::opts_chunk$set(message = FALSE, cache = TRUE, fig.height = 4)
 
 ## Special chunk options
 
-There are a few **knitr** [chunk options](http://yihui.name/knitr/options/) that conveniently map your output to special formatting supported by the tufte-jekyll layout. You might find it useful to [view the source]() for this post to see the actual chunk option settings.
+There are a few **knitr** [chunk options](http://yihui.name/knitr/options/) that conveniently map your output to special formatting supported by the tufte-jekyll layout. You might find it useful to [view the source](https://raw.githubusercontent.com/cpsievert/knitr-jekyll/gh-pages/_source/2015-04-20-jekyll-tufte-servr.Rmd) for this post to see the actual chunk option settings.
 
 ### Figure options
 
@@ -77,11 +77,11 @@ If you want inline, <script type="math/tex"> \alpha </script>
 
 At any time, you can add an arbitrary "marginnote" like this:
 
-```
+{% highlight html %}
 <span class='marginnote'>
   Table 1: Diamonds data
 </span>
-```
+{% endhighlight %}
 
 This can be quite useful especially for tables.
 
@@ -102,7 +102,7 @@ Similar to a 'marginnote' is a 'sidenote' which works like this
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
 
-```
+{% highlight html %}
 <sup class='sidenote-number'>
  1
 </sup>
@@ -110,4 +110,4 @@ Similar to a 'marginnote' is a 'sidenote' which works like this
   <sup class='sidenote-number'> 1 </sup> 
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
-```
+{% endhighlight %}

@@ -11,7 +11,7 @@ tags: [knitr, servr, httpuv, websocket]
 
 ## Special chunk options
 
-There are a few **knitr** [chunk options](http://yihui.name/knitr/options/) that conveniently map your output to special formatting supported by the tufte-jekyll layout. You might find it useful to [view the source]() for this post to see the actual chunk option settings.
+There are a few **knitr** [chunk options](http://yihui.name/knitr/options/) that conveniently map your output to special formatting supported by the tufte-jekyll layout. You might find it useful to [view the source](https://raw.githubusercontent.com/cpsievert/knitr-jekyll/gh-pages/_source/2015-04-20-jekyll-tufte-servr.Rmd) for this post to see the actual chunk option settings.
 
 ### Figure options
 
@@ -79,14 +79,13 @@ options(width = 55, digits = 3)
 
 
 {% highlight text %}
-##  [1] -1.69981 -0.56257  0.25953 -0.08580 -0.81997
-##  [6]  0.82977 -0.44733  1.73669 -1.13040 -0.47976
-## [11]  0.81233  0.10360 -0.44777  0.00212  0.25713
-## [16] -1.35982 -0.05049  1.29105  2.02322 -0.46417
-## [21]  0.67628  0.26382  1.17447  0.99113  0.60489
-## [26]  0.51472  1.53108  0.11159 -2.19390  1.86326
-## [31]  0.99967  2.02991 -1.80344 -0.03235  0.11251
-## [36]  0.04727 -0.70848 -0.61941  0.13034  0.44231
+##  [1]  0.4779  1.6193  0.8740 -0.3443  0.6708 -0.3595
+##  [7] -0.7876  0.4357 -1.0638  0.7807 -1.1370 -0.3950
+## [13]  0.7874 -0.8808  2.3192  0.0172 -0.7124 -2.2382
+## [19] -1.0699  2.0770  1.4668  1.1459  0.9196 -0.6784
+## [25]  1.0554 -1.9228 -0.2850  0.0023 -0.4039 -2.1761
+## [31]  2.0912 -0.8660  1.1960  0.3555  0.5527  1.4020
+## [37]  1.8807 -0.7763 -0.5862  2.2027
 {% endhighlight %}
 
 ## Mathjax
@@ -104,11 +103,11 @@ If you want inline, <script type="math/tex"> \alpha </script>
 
 At any time, you can add an arbitrary "marginnote" like this:
 
-```
+{% highlight html %}
 <span class='marginnote'>
   Table 1: Diamonds data
 </span>
-```
+{% endhighlight %}
 
 This can be quite useful especially for tables.
 
@@ -141,7 +140,7 @@ Similar to a 'marginnote' is a 'sidenote' which works like this
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
 
-```
+{% highlight html %}
 <sup class='sidenote-number'>
  1
 </sup>
@@ -149,4 +148,4 @@ Similar to a 'marginnote' is a 'sidenote' which works like this
   <sup class='sidenote-number'> 1 </sup> 
   Sidenotes are kind of like footnotes that appear in the side margin.
 </span> 
-```
+{% endhighlight %}
