@@ -24,7 +24,7 @@ p <- ggplot(diamonds, aes(carat))
 p + geom_histogram()
 {% endhighlight %}
 
-<span class='marginnote'>Figure 1: A nice plot that is not quite wide enough.</span><img class='fullwidth' src='/figure/source/2015-04-20-jekyll-tufte-servr/skinny-1.png'/>
+<span class='marginnote'>Figure 1: A nice plot that is not quite wide enough.</span><img class='fullwidth' src='/knitr-jekyll/figure/source/2015-04-20-jekyll-tufte-servr/skinny-1.png'/>
 
 If we increase `fig.width` to a ridiculous number, say 20 inches, it will still be constrained to the text width, even by changing `fig.width` to 20 inches. 
 
@@ -33,7 +33,7 @@ If we increase `fig.width` to a ridiculous number, say 20 inches, it will still 
 p + geom_histogram(aes(y = ..density..))
 {% endhighlight %}
 
-<span class='marginnote'>Figure 2: The `fig.height` for this chunk is same as Figure 1, but the `fig.width` is now 20. Since the width is constrained by the text width, the figure is shrunken quite a bit.</span><img class='fullwidth' src='/figure/source/2015-04-20-jekyll-tufte-servr/wide-1.png'/>
+<span class='marginnote'>Figure 2: The `fig.height` for this chunk is same as Figure 1, but the `fig.width` is now 20. Since the width is constrained by the text width, the figure is shrunken quite a bit.</span><img class='fullwidth' src='/knitr-jekyll/figure/source/2015-04-20-jekyll-tufte-servr/wide-1.png'/>
 
 By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you need a wider figure, set the `fig.fullwidth` chunk option equal to `TRUE`.
 
@@ -44,7 +44,7 @@ p + geom_point(aes(y = price), alpha = 0.2) +
   geom_smooth(aes(y = price, fill = cut))
 {% endhighlight %}
 
-<div><img class='fullwidth' src='/figure/source/2015-04-20-jekyll-tufte-servr/full-1.png'/></div><p><span class='marginnote'>Figure 3: Full width plot</span></p>
+<div><img class='fullwidth' src='/knitr-jekyll/figure/source/2015-04-20-jekyll-tufte-servr/full-1.png'/></div><p><span class='marginnote'>Figure 3: Full width plot</span></p>
 
 To place figures in the margin, set the `fig.margin` chunk option equal to `TRUE`.
 
@@ -59,12 +59,11 @@ lim <- par()
 rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
 {% endhighlight %}
 
-<span class='marginnote'><img class='fullwidth' src='/figure/source/2015-04-20-jekyll-tufte-servr/margin-1.png'/>Figure 4: useR logo</span>
+
 
 {% highlight r %}
 unlink(tmp)
 {% endhighlight %}
-
 
 ## Sizing terminal output
  
@@ -79,13 +78,12 @@ options(width = 55, digits = 3)
 
 
 {% highlight text %}
-##  [1]  0.4779  1.6193  0.8740 -0.3443  0.6708 -0.3595
-##  [7] -0.7876  0.4357 -1.0638  0.7807 -1.1370 -0.3950
-## [13]  0.7874 -0.8808  2.3192  0.0172 -0.7124 -2.2382
-## [19] -1.0699  2.0770  1.4668  1.1459  0.9196 -0.6784
-## [25]  1.0554 -1.9228 -0.2850  0.0023 -0.4039 -2.1761
-## [31]  2.0912 -0.8660  1.1960  0.3555  0.5527  1.4020
-## [37]  1.8807 -0.7763 -0.5862  2.2027
+##  [1]  1.035  0.545  0.902  1.058 -0.746  2.284  0.299
+##  [8] -0.356  0.262  0.477 -2.173 -0.368  0.674  0.440
+## [15]  0.963  0.538 -1.141 -1.081  0.553 -1.469 -1.012
+## [22]  0.697 -0.212 -2.025  1.340  1.028 -0.171 -0.169
+## [29] -0.808  2.285 -0.449 -0.168  0.744  0.538 -0.102
+## [36] -2.603 -1.361 -0.470  1.157 -0.539
 {% endhighlight %}
 
 ## Mathjax

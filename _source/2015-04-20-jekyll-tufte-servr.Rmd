@@ -52,7 +52,6 @@ rasterImage(img, lim$usr[1], lim$usr[3], lim$usr[2], lim$usr[4])
 unlink(tmp)
 ```
 
-
 ## Sizing terminal output
  
 The default `R` terminal output width is 80, which is a bit too big for the styling of this blog, but a width of 55 works pretty well:

@@ -1,14 +1,15 @@
 local({
   if (!file.exists('_config.yml')) return()
   x = iconv(readLines('_config.yml', encoding = 'UTF-8'), 'UTF-8')
+  baseurl = grep('^baseurl:', x, value = TRUE)
+  baseurl = sub(".*['\"](.*)['\"].*", "\\1",  baseurl)
   x = grep('^markdown:\\s*[a-z]+\\s*$', x, value = TRUE)
   # see if we need to use the Jekyll render in knitr (i.e. if the markdown
   # engine is kramdown)
   if (length(x) == 0 || (length(x) == 1 && strsplit(x, ':\\s*')[[1]][2] == 'kramdown')) {
     knitr::render_jekyll()
   } else knitr::render_markdown()
-})
-local({
+
   # input/output filenames are passed as two additional arguments to Rscript
   a = commandArgs(TRUE)
   d = gsub('^_|[.][a-zA-Z]+$', '', a[1])
@@ -27,23 +28,24 @@ local({
       base.url = 'http://db.yihui.name/jekyll/'
     )
   } else {
-    knitr::opts_knit$set(base.url = '/')
+    knitr::opts_knit$set(base.url = baseurl)
   }
   # post-process plot output to the tufte specific liquid tags
   knitr::knit_hooks$set(plot = function(x, options) {
     cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
-    inline <- sprintf("'/%s' '%s'", as.character(x), cap)
-    # assume people want the main column by default
-    if (is.null(options$fig.maincolumn)) options$fig.maincolumn <- TRUE
     if (isTRUE(options$fig.margin)) {
-      sprintf("<span class='marginnote'><img class='fullwidth' src='/%s'/>%s</span>", x, cap)
+      sprintf("<span class='marginnote'><img class='fullwidth' src='%s/%s'/>%s</span>",
+              options$base.url, x, cap)
     } else if (isTRUE(options$fig.fullwidth)) {
-      sprintf("<div><img class='fullwidth' src='/%s'/></div><p><span class='marginnote'>%s</span></p>", x, cap)
-    } else if (options$fig.maincolumn) {
-      sprintf("<span class='marginnote'>%s</span><img class='fullwidth' src='/%s'/>", cap, x)
+      sprintf("<div><img class='fullwidth' src='%s/%s'/></div><p><span class='marginnote'>%s</span></p>", baseurl, x, cap)
     } else {
-      knitr::hook_plot_html(x, options)
+      # 'maincolumn' figure
+      sprintf("<span class='marginnote'>%s</span><img class='fullwidth' src='%s/%s'/>", cap, baseurl, x)
     }
+    # I don't think it makes sense to expose the usual html figure hook
+    # If you want a figure wider than maincolumn, use fig.fullwidth
+    # with appropriate fig.width
+    # knitr::hook_plot_html(x, options)
   })
   knitr::opts_knit$set(width = 50)
   knitr::knit(a[1], a[2], quiet = TRUE, encoding = 'UTF-8', envir = .GlobalEnv)
