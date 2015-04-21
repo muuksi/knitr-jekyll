@@ -34,8 +34,7 @@ local({
   knitr::knit_hooks$set(plot = function(x, options) {
     cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
     if (isTRUE(options$fig.margin)) {
-      sprintf("<span class='marginnote'><img class='fullwidth' src='%s/%s'/>%s</span>",
-              options$base.url, x, cap)
+      sprintf("<span class='marginnote'><img class='fullwidth' src='%s/%s'/>%s</span>", baseurl, x, cap)
     } else if (isTRUE(options$fig.fullwidth)) {
       sprintf("<div><img class='fullwidth' src='%s/%s'/></div><p><span class='marginnote'>%s</span></p>", baseurl, x, cap)
     } else {
