@@ -32,15 +32,15 @@ local({
   # post-process plot output to the tufte specific liquid tags
   knitr::knit_hooks$set(plot = function(x, options) {
     cap <- if (is.null(options$fig.cap)) "" else options$fig.cap
-    inline <- sprintf("'%s' '%s'", as.character(x), cap)
+    inline <- sprintf("'/%s' '%s'", as.character(x), cap)
     # assume people want the main column by default
     if (is.null(options$fig.maincolumn)) options$fig.maincolumn <- TRUE
     if (isTRUE(options$fig.margin)) {
-      paste("{% marginfigure", inline, "%}")
+      sprintf("<span class='marginnote'><img class='fullwidth' src='/%s'/>%s</span>", x, cap)
     } else if (isTRUE(options$fig.fullwidth)) {
-      paste("{% fullwidth", inline, "%}")
+      sprintf("<div><img class='fullwidth' src='/%s'/></div><p><span class='marginnote'>%s</span></p>", x, cap)
     } else if (options$fig.maincolumn) {
-      paste("{% maincolumn", inline, "%}")
+      sprintf("<span class='marginnote'>%s</span><img class='fullwidth' src='/%s'/>", cap, x)
     } else {
       knitr::hook_plot_html(x, options)
     }

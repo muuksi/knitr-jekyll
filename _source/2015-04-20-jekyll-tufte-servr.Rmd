@@ -5,7 +5,7 @@ categories: [jekyll, rstats]
 tags: [knitr, servr, httpuv, websocket]
 ---
 
-{% newthought 'This post introduces' %} [my fork](http://github.com/cpsievert/knitr-jekyll) of Yihui's [knitr-jekyll](https://github.com/yihui/knitr-jekyll) that swaps the default theme with [tufte-jekyll](https://github.com/clayh53/tufte-jekyll). I recommend reading [this post](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html) to learn about why `servr + knitr + jekyll` is awesome and (if needed) use [this post](http://clayh53.github.io/tufte-jekyll/articles/15/tufte-style-jekyll-blog/) as a reference for "tufte-jekyll liquid tags" that do stuff like this{% sidenote 1 'pointless side note'%}. There are a lot moving parts, so if you use this and run into issues, [please let me know](https://github.com/cpsievert/knitr-jekyll)!
+<span class='newthought'>This post introduces</span> [my fork](http://github.com/cpsievert/knitr-jekyll) of Yihui's [knitr-jekyll](https://github.com/yihui/knitr-jekyll) that swaps the default theme with [tufte-jekyll](https://github.com/clayh53/tufte-jekyll). I recommend reading [this post](http://yihui.name/knitr-jekyll/2014/09/jekyll-with-knitr.html) to learn about why `servr + knitr + jekyll` is awesome and (if needed) use [this post](http://clayh53.github.io/tufte-jekyll/articles/15/tufte-style-jekyll-blog/) as a reference for "tufte-jekyll liquid tags" that do stuff like this <span class='newthought'>pointless side note</span>. There are a lot moving parts, so if you use this and run into issues, [please let me know](https://github.com/cpsievert/knitr-jekyll)!
 
 ```{r setup, echo = FALSE, message = FALSE}
 knitr::opts_chunk$set(message = FALSE, cache = TRUE, fig.height = 4)
@@ -66,16 +66,48 @@ options(width = 55, digits = 3)
 
 What's that? You can't live without math equations?
 
-{% math %}x = {-b \pm \sqrt{b^2-4ac} \over 2a}.{% endmath %}
+<script type="math/tex; mode=display">
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
+</script>
 
-If you want inline {% m %} \alpha {% em %}
+If you want inline, <script type="math/tex"> \alpha </script>
 
 ## Tables
 
-Use the "marginnote" liquid tag to add table captions
 
-{% marginnote 'Table 1: Diamonds data' %}
+At any time, you can add an arbitrary "marginnote" like this:
+
+```
+<span class='marginnote'>
+  Table 1: Diamonds data
+</span>
+```
+
+This can be quite useful especially for tables.
+
+<span class='marginnote'> Table 1: Diamonds data </span>
 
 ```{r}
 knitr::kable(head(diamonds), "markdown")
+```
+
+## Sidenotes
+
+Similar to a 'marginnote' is a 'sidenote' which works like this
+<sup class='sidenote-number'>
+ 1
+</sup>
+<span class='sidenote'>
+  <sup class='sidenote-number'> 1 </sup> 
+  Sidenotes are kind of like footnotes that appear in the side margin.
+</span> 
+
+```
+<sup class='sidenote-number'>
+ 1
+</sup>
+<span class='sidenote'>
+  <sup class='sidenote-number'> 1 </sup> 
+  Sidenotes are kind of like footnotes that appear in the side margin.
+</span> 
 ```
