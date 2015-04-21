@@ -61,23 +61,36 @@ options(width = 55, digits = 3)
 
 ## Mathjax
 
-What's that? You can't live without math equations?
+If you want inline math rendering, put `$$ math $$` inline. For example, $$ \Gamma(\alpha) = (\alpha - 1)!$$. If you want it on it's own line, do something like:
+
+{% highlight latex %}
+$$
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
+$$
+{% endhighlight %}
+
+which results in
 
 $$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
 $$
 
-If you want inline, $$ \alpha $$.
+## Margin notes
 
-## Marginnotes
+<span class='marginnote'> 
+<img class="fullwidth" src="http://i.imgur.com/NCMxz5G.gif">
+So excite.
+</span>
 
-It's easy to add comments in the side margin by wrapping your comments in a `<span>` HTML tag:
+Put stuff in the side margin using the `<span>` HTML tag with a class of 'marginnote':
 
 {% highlight html %}
-<span class='marginnote'> Add comment here </span>
+<span class='marginnote'> 
+  Anything here will appear in side margin 
+</span>
 {% endhighlight %}
 
-Marginnotes can be especially useful for tables.
+Another (less cute) example of margin notes is to add a table caption. In fact, the figure captions above are just margin notes.
 
 <span class='marginnote'> 
 Table 1: Output from a simple linear regression in tabular form.
@@ -87,6 +100,7 @@ Table 1: Output from a simple linear regression in tabular form.
 m <- lm(vs ~ wt, mtcars)
 knitr::kable(broom::tidy(m), format = "markdown")
 ```
+
 
 ## Sidenotes
 
@@ -105,9 +119,9 @@ Similar to a 'marginnote' is a 'sidenote'<sup class='sidenote-number'> 1 </sup> 
 </span> 
 {% endhighlight %}
 
-Of course[^1], you can also do footnotes.
+Unfortunately, this is a lot of HTML markup, but of course[^2], you can also do footnotes, so that might be a better option.
 
-[^1]: I hate it when people say "of course" as though this is obvious everyone.
+[^2]: I hate it when people say "of course" as though this is obvious everyone.
 
 ## Contact me
 

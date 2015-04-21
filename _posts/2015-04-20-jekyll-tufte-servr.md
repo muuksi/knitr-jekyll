@@ -76,34 +76,47 @@ options(width = 55, digits = 3)
 
 
 {% highlight text %}
-##  [1] -0.5438 -0.6317  1.0599 -1.0972 -0.6072  3.1457
-##  [7] -0.9770  0.3725  0.0683  0.4131 -0.9569  1.1540
-## [13] -0.8741  1.7433  1.3148  0.4818  0.8428 -0.0302
-## [19]  0.2946 -0.7404 -0.0600  0.8840 -0.9642 -1.2273
-## [25]  0.7851  2.3867  0.5279  1.2017 -0.8985 -0.4066
-## [31] -0.6701  1.1611 -0.9568 -0.1274 -0.1961 -1.6117
-## [37]  0.0734  0.6713  1.1539  0.4102
+##  [1] -0.5526 -0.2789  0.0969  1.2977  2.0048  0.6793
+##  [7] -0.3654  0.6100 -0.4588  0.2282  1.3401 -0.8668
+## [13]  0.5047 -0.3934  0.0678  0.6107  0.3132 -0.4580
+## [19] -0.7110 -0.2715 -1.2363 -1.0533  0.4212  1.2456
+## [25]  0.5092 -0.0448  0.2914  1.4695  0.4842  0.7739
+## [31]  0.1656 -0.1968 -0.8080 -0.1741  1.5958  0.8783
+## [37]  1.0856  1.3591 -0.8850  0.8852
 {% endhighlight %}
 
 ## Mathjax
 
-What's that? You can't live without math equations?
+If you want inline math rendering, put `$$ math $$` inline. For example, $$ \Gamma(\alpha) = (\alpha - 1)!$$. If you want it on it's own line, do something like:
+
+{% highlight latex %}
+$$
+x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
+$$
+{% endhighlight %}
+
+which results in
 
 $$
 x = {-b \pm \sqrt{b^2-4ac} \over 2a}.
 $$
 
-If you want inline, $$ \alpha $$.
+## Margin notes
 
-## Marginnotes
+<span class='marginnote'> 
+<img class="fullwidth" src="http://i.imgur.com/NCMxz5G.gif">
+So excite.
+</span>
 
-It's easy to add comments in the side margin by wrapping your comments in a `<span>` HTML tag:
+Put stuff in the side margin using the `<span>` HTML tag with a class of 'marginnote':
 
 {% highlight html %}
-<span class='marginnote'> Add comment here </span>
+<span class='marginnote'> 
+  Anything here will appear in side margin 
+</span>
 {% endhighlight %}
 
-Marginnotes can be especially useful for tables.
+Another (less cute) example of margin notes is to add a table caption. In fact, the figure captions above are just margin notes.
 
 <span class='marginnote'> 
 Table 1: Output from a simple linear regression in tabular form.
@@ -114,6 +127,7 @@ Table 1: Output from a simple linear regression in tabular form.
 |:-----------|----------:|---------:|---------:|---------:|
 |(Intercept) |  1.3571325| 0.2627456|  5.165195| 0.0000146|
 |wt          | -0.2858443| 0.0782378| -3.653533| 0.0009798|
+
 
 ## Sidenotes
 
@@ -132,9 +146,9 @@ Similar to a 'marginnote' is a 'sidenote'<sup class='sidenote-number'> 1 </sup> 
 </span> 
 {% endhighlight %}
 
-Of course[^1], you can also do footnotes.
+Unfortunately, this is a lot of HTML markup, but of course[^2], you can also do footnotes, so that might be a better option.
 
-[^1]: I hate it when people say "of course" as though this is obvious everyone.
+[^2]: I hate it when people say "of course" as though this is obvious everyone.
 
 ## Contact me
 
