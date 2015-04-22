@@ -33,7 +33,7 @@ p + geom_histogram(aes(y = ..density..))
 
 <span class='marginnote'>Figure 2: The `fig.height` for this chunk is same as Figure 1, but the `fig.width` is now 20. Since the width is constrained by the text width, the figure is shrunken quite a bit.</span><img class='fullwidth' src='/knitr-jekyll/figure/source/2015-04-20-jekyll-tufte-servr/wide-1.png'/>
 
-By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you don't want to retrict the final figure width, set the `fig.fullwidth` chunk option equal to `TRUE`. In this case, the figure caption is placed in the side margin below the figure.
+By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you don't want to restrict the final figure width, set the `fig.fullwidth` chunk option equal to `TRUE`. In this case, the figure caption is placed in the side margin below the figure.
 
 
 {% highlight r %}
@@ -157,12 +157,6 @@ If you find any issues or want to help improve the implementation, [please let m
 ## Session Information
 
 
-{% highlight r %}
-sessionInfo()
-{% endhighlight %}
-
-
-
 {% highlight text %}
 ## R version 3.1.3 (2015-03-09)
 ## Platform: x86_64-apple-darwin13.4.0 (64-bit)
@@ -180,18 +174,13 @@ sessionInfo()
 ## [3] ggplot2_1.0.0.99
 ## 
 ## loaded via a namespace (and not attached):
-##  [1] assertthat_0.1   broom_0.3.6     
-##  [3] codetools_0.2-10 colorspace_1.2-4
-##  [5] DBI_0.3.1        digest_0.6.8    
-##  [7] dplyr_0.4.1      evaluate_0.5.5  
-##  [9] formatR_1.0      grid_3.1.3      
-## [11] gtable_0.1.2     knitr_1.9.3     
-## [13] lattice_0.20-30  magrittr_1.5    
-## [15] MASS_7.3-39      Matrix_1.1-5    
-## [17] mnormt_1.5-1     munsell_0.4.2   
-## [19] parallel_3.1.3   plyr_1.8.1      
-## [21] proto_0.3-10     psych_1.5.1     
-## [23] Rcpp_0.11.5      reshape2_1.4.1  
-## [25] scales_0.2.4     stringr_0.6.2   
-## [27] tidyr_0.2.0      tools_3.1.3
+##  [1] colorspace_1.2-4 digest_0.6.8    
+##  [3] evaluate_0.5.5   formatR_1.0     
+##  [5] grid_3.1.3       gtable_0.1.2    
+##  [7] knitr_1.9.3      lattice_0.20-30 
+##  [9] MASS_7.3-39      Matrix_1.1-5    
+## [11] munsell_0.4.2    plyr_1.8.1      
+## [13] proto_0.3-10     Rcpp_0.11.5     
+## [15] reshape2_1.4.1   scales_0.2.4    
+## [17] stringr_0.6.2    tools_3.1.3
 {% endhighlight %}

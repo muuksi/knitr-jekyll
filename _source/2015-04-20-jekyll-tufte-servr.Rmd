@@ -29,7 +29,7 @@ If we increase `fig.width` to a ridiculous number, say 20 inches, it will still 
 p + geom_histogram(aes(y = ..density..))
 ```
 
-By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you don't want to retrict the final figure width, set the `fig.fullwidth` chunk option equal to `TRUE`. In this case, the figure caption is placed in the side margin below the figure.
+By constraining the figure width, it will ensure that figure captions (set via `fig.cap`) appear correctly in the side margin. If you don't want to restrict the final figure width, set the `fig.fullwidth` chunk option equal to `TRUE`. In this case, the figure caption is placed in the side margin below the figure.
 
 ```{r full, fig.width = 20, fig.fullwidth = TRUE, fig.cap = "Figure 3: Full width plot"}
 p + geom_point(aes(y = price), alpha = 0.2) + 
@@ -129,6 +129,6 @@ If you find any issues or want to help improve the implementation, [please let m
 
 ## Session Information
 
-```{r}
+```{r, echo = FALSE}
 sessionInfo()
 ```
