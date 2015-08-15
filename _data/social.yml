@@ -6,5 +6,5 @@
   icon: icon-github
 - link: //www.flickr.com/explore
   icon: icon-flickr
-- link: /feed
+- link: /feed.xml
   icon: icon-feed
