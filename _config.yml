@@ -1,6 +1,6 @@
 # Site settings
 author: Maximilian Hinse
-title: @muuksi/blog
+title: muuksi blog
 email: blog@hinse.eu
 description: > # this means to ignore newlines until "baseurl:"
   This is the personal blog by Maximilian H. (@muuksi). #rstats and stuff
