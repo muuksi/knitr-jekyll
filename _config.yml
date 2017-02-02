@@ -4,7 +4,7 @@ title: muuksi blog
 email: blog@hinse.eu
 description: > # this means to ignore newlines until "baseurl:"
   This is the personal blog by Maximilian H. (@muuksi). #rstats and stuff
-baseurl: "/blog" # the subpath of your site, e.g. "/blog". For explanation, see https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/ 
+#baseurl: "/blog" # the subpath of your site, e.g. "/blog". For explanation, see https://byparker.com/blog/2014/clearing-up-confusion-around-baseurl/ 
 url: "http://muuksi.github.io" # the base hostname & protocol for your site
 permalink: /:year/:month/:title.html
 
